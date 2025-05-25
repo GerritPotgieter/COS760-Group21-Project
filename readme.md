@@ -7,3 +7,13 @@ Group Members:
 Gerrit Potgieter (u22508041)
 Mihail Dicoski (u22495292)
 Heinrich Niebuhr (u22555855)
+
+
+
+Setup:
+```
+python -m venv crosslingual-env
+crosslingual-env\scripts\activate
+
+pip install gensim pandas numpy nltk
+```
