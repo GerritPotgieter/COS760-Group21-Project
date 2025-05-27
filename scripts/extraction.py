@@ -4,8 +4,8 @@ import os
 #The script reads the TRAIN file, extracts the first word token from each line,
 #and saves the sentences to a new file in a simple format
 
-TRAIN_FILE = 'data/Nguni/TRAIN/SADII.ZU.Morph_Lemma_POS.1.0.0.TRAIN.CTexT.TG.2021-09-30.txt' #Change this to the filepath of the TRAIN file you want to process
-OUTPUT_FILE = 'data/Processed/sentences_ZULU.txt' #Change this to the desired output filepath
+TRAIN_FILE = 'data/Nguni/TRAIN/SADII.XH.Morph_Lemma_POS.1.0.0.TRAIN.CTexT.TG.2021-09-30.txt' #Change this to the filepath of the TRAIN file you want to process
+OUTPUT_FILE = 'data/Processed/sentences_XHOSA.txt' #Change this to the desired output filepath
 def extract_surface_tokens(filepath):
     sentences = []
     current_sentence = []
