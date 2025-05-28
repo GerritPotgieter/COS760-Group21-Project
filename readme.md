@@ -15,5 +15,5 @@ Setup:
 python -m venv crosslingual-env
 crosslingual-env\scripts\activate
 
-pip install gensim pandas numpy nltk
+pip install gensim pandas numpy nltk scikit-learn
 ```
