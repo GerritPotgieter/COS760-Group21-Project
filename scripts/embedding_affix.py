@@ -2,8 +2,8 @@ from gensim.models import Word2Vec
 import os
 
 
-AFFIX_FILE_PATH = 'data/Processed/affixes_sentences_XHOSA.txt'  
-OUTPUT_MODEL_PATH = 'data/Models/word2vec_xhosa_affixes.model' 
+AFFIX_FILE_PATH = 'data/Processed/affix_sentences_ZULU.txt'  
+OUTPUT_MODEL_PATH = 'data/Models/word2vec_zulu_affixes.model' 
 VECTOR_SIZE = 100
 WINDOW = 5
 MIN_COUNT = 2
@@ -36,7 +36,7 @@ w2v_model.save(OUTPUT_MODEL_PATH)
 print(f"Affix-based Word2Vec model saved to {OUTPUT_MODEL_PATH}")
 
 #testing model 
-query_word = "ba"  # can be affix or root from your dataset (ba fu ni)
+query_word = "bafundi"  # can be affix or root from your dataset (ba fu ni)
 if query_word in w2v_model.wv:
     print(f"\nMost similar to '{query_word}':")
     for word, score in w2v_model.wv.most_similar(query_word, topn=5):
