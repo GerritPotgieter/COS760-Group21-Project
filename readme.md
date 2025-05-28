@@ -17,3 +17,8 @@ crosslingual-env\scripts\activate
 
 pip install gensim pandas numpy nltk
 ```
+
+If you are having trouble installing dependencies try precompiled binary: 
+```
+pip install numpy pandas nltk gensim --only-binary :all:
+```

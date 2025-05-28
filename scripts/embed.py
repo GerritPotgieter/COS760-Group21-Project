@@ -32,7 +32,7 @@ model = Word2Vec.load(OUTPUT_FILE)
 print(model.wv.most_similar("zabahlali", topn=5))
 
 #Results : [('aqinisekise', 0.939693033695221), ('nomphakathi', 0.9326698184013367), ('kungenzeka', 0.9323709607124329), ('akwazi', 0.9298385381698608), ('abe', 0.9297009706497192)]
-# 1. They ensure/certify -> indicates repsonbility or action taken in relation to the community
+# 1. They ensure/certify -> indicates responsibility or action taken in relation to the community
 # 2. And the community -> indicates a connection or relationship with the community
 # 3. It is possible -> indicates potential or capability in relation to the community
 # 4. Can -> indicates ability or possibility in relation to the community
