@@ -41,9 +41,16 @@ print(f"Total eval pairs: {total}")
 print(f"Top-1 accuracy: {top1 / total:.2%}")
 print(f"Top-5 accuracy: {top5 / total:.2%}")
 
+#Total eval pairs: 183
+#Top-1 accuracy: 74.86%
+#Top-5 accuracy: 85.79%
+#Latest output from model run on 5/29/2025
+
 print("\nSample word alignments (Zulu → Xhosa):\n")
 
 # Randomly select 10 pairs for inspection
+# The output produced here is for manual inspection and validation
+# Would recommend actually the words and their meanings between the two langs to evaluate accuracy properly
 for zul_word, xho_gold in sample(eval_pairs, 10):
     if zul_word not in aligned_zul:
         continue
@@ -51,6 +58,18 @@ for zul_word, xho_gold in sample(eval_pairs, 10):
     print(f"Zulu: {zul_word}")
     print(f"  Gold Xhosa: {xho_gold}")
     for rank, (word, score) in enumerate(sims, start=1):
-        indicator = "✅" if word == xho_gold else ""
+        indicator = "Best " if word == xho_gold else ""
         print(f"    {rank}. {word} (score: {score:.4f}) {indicator}")
     print("-" * 40)
+
+
+# Sample output:
+
+# Sample word alignments (Zulu → Xhosa):
+#Zulu: imbangela
+#  Gold Xhosa: unobangela
+#    1. iziphumo (score: 0.3992) 
+#    2. ingxelo (score: 0.3093) 
+#    3. unobangela (score: 0.2924) Best 
+#    4. usapho (score: 0.2550) 
+#    5. funda (score: 0.2473) 
