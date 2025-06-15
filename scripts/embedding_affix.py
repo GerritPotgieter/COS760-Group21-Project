@@ -4,10 +4,10 @@ import re
 import numpy as np
 import pickle
 
-
-AFFIX_FILE_PATH = 'data/Nguni/TRAIN/SADII.XH.Morph_Lemma_POS.1.0.0.TRAIN.CTexT.TG.2021-09-30.txt'  
-OUTPUT_MODEL_PATH = 'data/Models/word2vec_xhosa_affixes.model' 
-AFFIX_TEST_FILE_PATH = 'data/Nguni/TEST/SADII.XH.Morph_Lemma_POS.1.0.0.TEST.CTexT.TG.2021-09-30.txt'
+#remember to switch vars for xhosa, zulu and then also keep in mind the pickle files toward the eof *********
+AFFIX_FILE_PATH = 'data/Nguni/TRAIN/SADII.ZU.Morph_Lemma_POS.1.0.0.TRAIN.CTexT.TG.2021-09-30.txt'  
+OUTPUT_MODEL_PATH = 'data/Models/word2vec_zulu_affixes.model' 
+AFFIX_TEST_FILE_PATH = 'data/Nguni/TEST/SADII.ZU.Morph_Lemma_POS.1.0.0.TEST.CTexT.TG.2021-09-30.txt'
 VECTOR_SIZE = 100
 WINDOW = 5
 MIN_COUNT = 2
@@ -146,12 +146,12 @@ print(f"Affix-based Word2Vec model saved to {OUTPUT_MODEL_PATH}")
 
 #creating the dictionary which maps the surface level words to the tokens with affixes 
 affixdictionary = build_affix_dictionary(AFFIX_FILE_PATH)
-with open("data/Models/affix_dictionary.pkl", "wb") as f:
+with open("data/Models/affix_dictionary_zulu.pkl", "wb") as f:
     pickle.dump(affixdictionary, f)
     print("Saved affix dictionary to pkl...")
 
 affixtestdictionary = build_affix_dictionary(AFFIX_TEST_FILE_PATH)
-with open("data/Models/affix_test_dictionary.pkl", "wb") as f:
+with open("data/Models/affix_test_dictionary_zulu.pkl", "wb") as f:
     pickle.dump(affixtestdictionary, f)
     print("Saved affix TEST dictionary to pkl...")
 
