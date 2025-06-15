@@ -58,8 +58,9 @@ for xho_word, zul_gold in sample(eval_pairs, 10):
         print(f"    {rank}. {word} (score: {score:.4f}) {indicator}")
     print("-" * 40)
 
-#Sample word alignments (Xhosa → Zulu):
+#Sample Output: 
 
+#Sample word alignments (Xhosa → Zulu):
 #Xhosa: ephakathi
 #  Gold Zulu: kahle
 #    1. kahle (score: 0.4743) Best

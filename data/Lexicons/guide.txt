@@ -1,0 +1,3 @@
+https://researchdata.up.ac.za/articles/dataset/South_African_multilingual_lexicons/27002596?file=49145419
+
+This dataset contains a list of paired words for South Africa languages: Sepedi (nso), Sesotho(st), Tshivenda(ven), Xitsonga(tso), Setswana(tsn), IsiXhosa(xho), Isizulu(zul), Afrikaans(af), Isiswati(ssw), IsiNdebele(nr), and English(en). The paired words are stored in a json file with keys dict_keys(['en-af', 'en-zul', 'en-xho', 'en-ssw', 'en-nr', 'en-nso', 'en-tsn', 'en-st', 'en-ven', 'en-tso']) for ease of use and accessibility. For each key (E.g en-xho) retrieves a list of paired words between English (en) and IsiXhosa(xho).
