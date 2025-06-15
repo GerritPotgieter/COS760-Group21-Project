@@ -1,10 +1,12 @@
-from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from datasets import load_dataset, DatasetDict
+from sklearn.metrics import precision_recall_fscore_support
+import torch
 # Amharic (amh)                               these are the known languages in the masakhaner dataset
 # Hausa (hau)
 # Igbo (ibo)
 # Kinyarwanda (kin)
-# Luganda (kin)
+# Luganda (lug)
 # Luo (luo)
 # Nigerian-Pidgin (pcm)
 # Swahili (swa)
@@ -18,12 +20,51 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification, pipelin
 # compared to disjunctive languages (e.g., Sesotho sa Leboa) in downstream tasks
 # like NER?
 
-languages = ["amh", 'hau', 'ibo', 'kin', 'lug', 'luo', 'pcm', 'swa', 'wol',  'yor' ] #zulu, xhosa, setswana 
-conjunctive_languages = ['kin', 'lug', 'swa']  # languages with conjunctive properties
-disjunctive_languages = ['amh', 'hau', 'ibo', 'luo', 'pcm', 'wol', 'yor']  # languages with disjunctive properties
+languages = ["amh", "hau", "ibo", "kin", "lug", "luo", "pcm", "swa", "wol", "yor"]
+conjunctive_languages = ['kin', 'lug', 'swa']
+disjunctive_languages = ['amh', 'hau', 'ibo', 'luo', 'pcm', 'wol', 'yor']
 
+def evaluate_ner(dataset, ner_pipeline):
+    true_labels = []
+    pred_labels = []
 
-datasets = {}
-for lang in languages:
-    datasets[lang] = load_dataset("masakhane/masakhaner2", lang)
-    print(f"Loaded dataset for {lang}")
+    for item in dataset:
+        tokens = item["tokens"]
+        labels = item["ner_tags"]
+
+        try:
+            preds = ner_pipeline(" ".join(tokens))
+            pred = [p['entity_group'] for p in preds]
+        except:
+            pred = []
+
+        true = labels[:len(pred)]  # crude alignment
+        true_labels.extend(true)
+        pred_labels.extend(pred)
+
+    return precision_recall_fscore_support(true_labels, pred_labels, average="macro", zero_division=0)
+
+def run_pivot_transfer_with_large_model(source_lang, target_lang, ner_pipeline):
+    print(f"\nEvaluating {source_lang.upper()} model on {target_lang.upper()} test data (large multilingual model)...")
+    try:
+        # Load target language dataset
+        test_data = load_dataset("masakhane/masakhaner2", target_lang)['test']
+        # Evaluate
+        scores = evaluate_ner(test_data, ner_pipeline)
+        print(f"{source_lang.upper()} → {target_lang.upper()} | Precision: {scores[0]:.4f}, Recall: {scores[1]:.4f}, F1: {scores[2]:.4f}")
+    except Exception as e:
+        print(f"Error during evaluation for {source_lang}→{target_lang}: {e}")
+
+# Load large multilingual model once
+model_name = "Davlan/xlm-roberta-large-masakhaner"
+print(f"\nLoading multilingual model: {model_name}")
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
+model = AutoModelForTokenClassification.from_pretrained(model_name)
+ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="simple")
+
+# Example: Swahili → Luganda and Luganda → Swahili
+source = "swa"
+target = "lug"
+
+run_pivot_transfer_with_large_model(source, target, ner_pipeline)
+run_pivot_transfer_with_large_model(target, source, ner_pipeline)
