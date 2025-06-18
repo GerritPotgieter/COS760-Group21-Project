@@ -1,5 +1,7 @@
 from gensim.models import Word2Vec
 
+# This script trains a Word2Vec model on a given languages words and saves the model to a file.
+
 FILE_PATH = 'data/Processed/sentences_XHOSA.txt' # Change this to the path of your processed text file
 OUTPUT_FILE = 'data/Models/word2vec_xhosa.model' # Change this to the desired output filepath
 

@@ -3,6 +3,9 @@ import json
 import random
 from random import sample
 
+# This script evaluates the alignment of Zulu and Xhosa word embeddings
+# by checking how well Zulu words can be predicted from Xhosa embeddings.
+
 # Load aligned models
 aligned_zul = KeyedVectors.load("data/Models/word2vec_zulu_aligned.model")
 aligned_xho = KeyedVectors.load("data/Models/word2vec_xhosa_aligned.model")
