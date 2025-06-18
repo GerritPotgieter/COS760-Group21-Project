@@ -1,4 +1,8 @@
 # Project: Optimizing Cross-Lingual Embeddings for isiZulu, Sepedi, and Setswana: Alignment Strategies, Pivot Selection, and Morphological Challenges.
+![GitHub repo size](https://img.shields.io/github/repo-size/GerritPotgieter/COS760-Group21-Project)
+
+
+
 
 In this project, we will attempt to address some concerns regarding morphological complexity
 and suboptimal language pivot selection. 
