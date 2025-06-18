@@ -10,15 +10,25 @@ Heinrich Niebuhr (u22555855)
 
 
 
-Setup:
+## Setup:
 ```
 python -m venv crosslingual-env
 crosslingual-env\scripts\activate
 
-pip install gensim pandas numpy nltk
+pip install requirements.txt # this installs all dependencies used for the project
 ```
 
 If you are having trouble installing dependencies try precompiled binary: 
 ```
 pip install numpy pandas nltk gensim --only-binary :all:
 ```
+
+
+## Running the code:
+There are specific scripts that you can run to get our results, namely the eval.py, eval_reverse.py , ner_matrix.py , compare_affix.py
+
+### Script to run code
+```
+python3 script_name.py
+```
+
