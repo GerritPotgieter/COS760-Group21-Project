@@ -7,6 +7,8 @@
 In this project, we will attempt to address some concerns regarding morphological complexity
 and suboptimal language pivot selection. 
 
+To view our presentation to get a better overview you can find our presentation [here](https://drive.google.com/file/d/1TTT4m09AyaUwzokhb4xRswOxsDD5bpH7/view?usp=sharing) 
+
 Group Members:
 Gerrit Potgieter (u22508041)
 Mihail Dicoski (u22495292)
@@ -32,7 +34,16 @@ pip install numpy pandas nltk gensim --only-binary :all:
 There are specific scripts that you can run to get our results, namely the eval.py, eval_reverse.py , ner_matrix.py , compare_affix.py
 
 ### Script to run code
+From the root of the project 
 ```
-python3 script_name.py
+python3 scripts/script_name.py
 ```
+
+#### Additional Note regarding allignment strategy
+To obtain our VecMap results you have to use the provided files in [this](https://github.com/artetxem/vecmap) repo.
+
+Use our zulu_xhosa_cleaned.txt as the dictionary and normalized models as the source and target embeddings.
+
+Run this with the supervised command as provided in the VecMap repo.
+
 
