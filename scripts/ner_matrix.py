@@ -74,8 +74,8 @@ def run_pivot_transfer_with_large_model(source_lang, target_lang, ner_pipeline):
         return 0.0
 
 # Load large multilingual model once with GPU support
-#model_name = "Davlan/xlm-roberta-large-masakhaner"    #change models here
-model_name = "AfroXLM-R-large"
+model_name = "Davlan/xlm-roberta-large-masakhaner"    #change models here
+#model_name = "AfroXLM-R-large"
 print(f"\nLoading multilingual model on GPU: {model_name}")
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
 model = AutoModelForTokenClassification.from_pretrained(model_name).to("cuda")

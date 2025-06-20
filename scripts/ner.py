@@ -19,7 +19,7 @@ import torch
 # Efficiency: How do conjunctive languages (e.g., isiZulu) scale with data size
 # compared to disjunctive languages (e.g., Sesotho sa Leboa) in downstream tasks
 # like NER?
-languages = ["amh", "hau", "ibo", "kin", "lug", "luo", "pcm", "swa", "wol", "yor"]
+languages = ['bam', 'bbj', 'ewe', 'fon', 'hau', 'ibo', 'kin', 'lug', 'luo', 'mos', 'nya', 'pcm', 'sna', 'swa', 'tsn', 'twi', 'wol', 'xho', 'yor', 'zul']
 conjunctive_languages = ['kin', 'lug', 'swa']
 disjunctive_languages = ['amh', 'hau', 'ibo', 'luo', 'pcm', 'wol', 'yor']
 
