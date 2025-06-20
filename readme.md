@@ -19,7 +19,8 @@ Heinrich Niebuhr (u22555855)
 ## Setup:
 ```
 python -m venv crosslingual-env
-crosslingual-env\scripts\activate
+crosslingual-env\scripts\activate # windows
+source venv/bin/activate #linux
 
 pip install requirements.txt # this installs all dependencies used for the project
 ```
@@ -36,7 +37,7 @@ There are specific scripts that you can run to get our results, namely the eval.
 ### Script to run code
 From the root of the project 
 ```
-python3 scripts/script_name.py
+python scripts/script_name.py
 ```
 
 #### Additional Note regarding allignment strategy
@@ -46,4 +47,5 @@ Use our zulu_xhosa_cleaned.txt as the dictionary and normalized models as the so
 
 Run this with the supervised command as provided in the VecMap repo.
 
+#### Final note regarding NER task
 
