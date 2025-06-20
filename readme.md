@@ -34,10 +34,15 @@ pip install numpy pandas nltk gensim --only-binary :all:
 ## Running the code:
 There are specific scripts that you can run to get our results, namely the eval.py, eval_reverse.py , ner_matrix.py , compare_affix.py
 
+for ner_matrix, please ensure that you have downloaded the CUDA graphics processing from nvidia devoper sight and run the installer. Please ensure that you are using a pyhton 3.10 version
+
 ### Script to run code
 From the root of the project 
 ```
 python scripts/script_name.py
+
+#for ner_matrix please use the following:
+py -3.10 ner_matrix
 ```
 
 #### Additional Note regarding allignment strategy
@@ -48,4 +53,4 @@ Use our zulu_xhosa_cleaned.txt as the dictionary and normalized models as the so
 Run this with the supervised command as provided in the VecMap repo.
 
 #### Final note regarding NER task
-
+ Care when running thi sfile as it uses alot of processing power and takes a while to run  and extremy long to finish ( over 2 hours )
