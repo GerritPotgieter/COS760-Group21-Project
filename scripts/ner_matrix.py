@@ -1,5 +1,5 @@
 
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline , XLMRobertaTokenizer, XLMRobertaForTokenClassification
 from datasets import load_dataset
 from sklearn.metrics import precision_recall_fscore_support
 import torch
@@ -76,10 +76,11 @@ def run_pivot_transfer_with_large_model(source_lang, target_lang, ner_pipeline):
 # Load large multilingual model once with GPU support
 model_name = "Davlan/xlm-roberta-large-masakhaner"    #change models here
 #model_name = "AfroXLM-R-large"
+device = 0 if torch.cuda.is_available() else -1 
 print(f"\nLoading multilingual model on GPU: {model_name}")
-tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
-model = AutoModelForTokenClassification.from_pretrained(model_name).to("cuda")
-ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="simple", device=0)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForTokenClassification.from_pretrained(model_name)
+ner_pipeline = pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="simple", device=device)
 
 # Matrix for all language pairs
 import numpy as np
